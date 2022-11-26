@@ -1,0 +1,55 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.EditProfileFormModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Register</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='~/css/styleRegisterForm.css'>
+</head>
+<body>
+
+    <video autoplay muted loop id="wallpaper">
+        <source src="~/img/yt5s.com-Japan Summer Tram. live wallpaper-(1080p60).mp4" type="video/mp4">
+    </video>
+
+    <form class="center" method="post" enctype="multipart/form-data">
+        <input hidden asp-for="PicturePath">
+
+        <h1>Edit Profile</h1>
+        <div class="content">
+
+            <div class="field_input">
+                <p>Name: <span asp-validation-for="Name" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="@Model.Name" placeholder="Name" value="@Model.user.Name"></p>
+                <p>Username: <span asp-validation-for="Username" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="@Model.Username" placeholder="Username" value="@Model.user.Username"></p>
+                <p>Email: <span asp-validation-for="Email" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="@Model.Email" placeholder="Email" value="@Model.user.Email"></p>
+                <p>Picture: <input asp-for="Picture" value=""></p>
+                <img src="~/pfp/@Model.user.Picture" height="130" width="130">
+                
+                <p>Change Password: <span asp-validation-for="NewPassword" style="color: orangered; font-size: 12px;"></span><input type="password" asp-for="NewPassword" placeholder="New Password" value=""></p>
+                <p>Repeat Password: <span asp-validation-for="ConfirmNewPassword" style="color: orangered; font-size: 12px;"></span><input type="password" asp-for="ConfirmNewPassword" placeholder="Repeat Password" value=""></p>
+            </div>
+
+            @section Scripts{
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var filename = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(filename);
+                        });
+                    });
+                </script>
+            }
+
+            <div class="content_footer">
+                <a class="content_footer_button"><input type="submit" class="content_footer_button" value="Save"></a>
+                <a class="content_footer_button" asp-page="/Index"><input type="button" class="content_footer_button" value="Cancel"></a>
+            </div>
+
+        </div>
+    </form>
+</body>

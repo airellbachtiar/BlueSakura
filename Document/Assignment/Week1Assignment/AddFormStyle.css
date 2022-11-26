@@ -1,0 +1,39 @@
+*{
+  font-family: calibri
+}
+
+.Form{
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.input{
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 20px;
+}
+
+select{
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 20px;
+}
+
+.Browse{
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+#button:hover{
+  background-color: #f2f2f2;
+}
+
+.BrowseButton{
+  margin: 5px;
+}
+
+#button{
+  margin-bottom: 10px;
+}

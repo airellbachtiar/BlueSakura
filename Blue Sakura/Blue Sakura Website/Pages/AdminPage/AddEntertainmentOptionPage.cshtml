@@ -1,0 +1,12 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.AdminPage.AddEntertainmentOptionPageModel
+@section CSS{
+    <link rel="stylesheet" href="~/css/AddEntertainmentPage.cshtml.css" />
+}
+
+<a asp-page="/AdminPage/AdminViewPage" class="back_button">Back</a>
+
+<div class="option_content">
+    <a class="option_content_button" asp-page="/AdminPage/AddAnimePage"><input type="button" value="Anime" style="cursor: pointer;"/></a>
+    <a class="option_content_button" asp-page="/AdminPage/AddMangaPage"><input type="button" value="Manga" style="cursor: pointer;"/></a>
+</div>

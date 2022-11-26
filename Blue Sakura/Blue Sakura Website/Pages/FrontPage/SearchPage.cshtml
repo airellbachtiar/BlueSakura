@@ -1,0 +1,35 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.FrontPage.SearchPageModel
+@{
+}
+
+<div class="search_content">
+    <form method="get">
+        <input type="text" asp-for="SearchInput" />
+        <a asp-page="/FrontPage/SearchPage" asp-route-SearchInput="@Model.SearchInput"><input type="submit" value="Search" /></a>
+    </form>
+</div>
+
+
+<div class="overview_container">
+
+    <table class="overview_table" style="font-size: 20px;">
+
+        <tr class="overview_table_header">
+            <th></th>
+            <th style="font-size: 40px;">Username</th>
+            <th style="font-size: 40px;">List</th>
+        </tr>
+
+        @foreach (Blue_Sakura_Logic.UserCollection.User u in Model.Users)
+        {
+            <tr>
+                <td><img src="~/pfp/@u.Picture" class="overview_profile_picture"></td>
+                <td class="overview_table_title"><a asp-page="/FrontPage/ViewUserPage" asp-route-UserID="@u.Id">@u.Username</a></td>
+                <td><a asp-page="/FrontPage/ViewUserPage" asp-route-UserID="@u.Id" style="text-decoration: none; color: aliceblue;">View</a></td>
+            </tr>
+        }
+
+    </table>
+
+</div>

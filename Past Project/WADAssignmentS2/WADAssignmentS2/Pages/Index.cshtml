@@ -1,0 +1,128 @@
+﻿@page
+@model IndexModel
+@section Login{
+    @if (Model.user.Username != null)
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page-handler="Logout">Logout</a></li>
+                <li><a class="login_button" asp-page="/EditProfileForm">EditProfile</a></li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page="/LoginForm">Login</a></li>
+            </ul>
+        </nav>
+        
+    }
+}
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+<section id="content_container">
+
+    <p>@Model.user.Name</p>
+
+    @foreach (Class.Anime a in Model.Animes)
+    {
+        <article class="show_list">
+            <div class="poster_container">
+                <img src="@a.Picture" id="anime_poster">
+                <input type="button" id="add_button" value="+">
+            </div>
+            <a asp-page="/IndividualPages" asp-route-AnimeID="@a.ID">@a.Title</a>
+            <p>@a.Type| @a.FirstGenre</p>
+        </article>
+    }
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Kimi.no.Na.wa.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/KimiNoNaWa">Kimi no Na wa.</a>
+        <p>Movie | Romance</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Mushoku.Tensei.Isekai.Ittara.Honki.Dasu.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/MushokuTensei">Mushoku Tensei: Isekai Ittara Honki Dasu</a>
+        <p>Series | Fantasy</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Violet.Evergarden.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/VioletEvergarden">Violet Evergarden</a>
+        <p>Series | Drama</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Violet.Evergarden.Movie.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/VioletEvergardenMovie">Violet Evergarden Movie</a>
+        <p>Movie | Drama</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Sen.to.Chihiro.no.Kamikakushi.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/SpiritedAway">Sen to Chihiro no Kamikakushi</a>
+        <p>Movie | Adventure</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Beastars.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/Beastars">Beastars</a>
+        <p>Series | Slice of Life</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Beastars.2nd.Season.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/Beastars2ndSeason">Beastars 2nd Season</a>
+        <p>Series | Slice of Life</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Anohana.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/Anohana">Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai</a>
+        <p>Series | Drama</p>
+    </article>
+
+    <article class="show_list">
+        <div class="poster_container">
+            <img src="img/Demon.Slayer.Poster.jpg" id="anime_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+        <a asp-page="/Anime/DemonSlayer">Kimetsu no Yaiba</a>
+        <p>Series | Action</p>
+    </article>
+
+</section>
+
+</div>

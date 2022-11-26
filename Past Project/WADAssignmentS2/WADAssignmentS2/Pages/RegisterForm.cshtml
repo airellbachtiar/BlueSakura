@@ -1,0 +1,41 @@
+﻿@page
+@model WADAssignmentS2.Pages.RegisterFormModel
+@section scripts{ 
+    <partial name="_ValidationScriptsPartial" />
+}
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Register</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='~/css/styleRegisterForm.css'>
+</head>
+<body>
+
+    <video autoplay muted loop id="wallpaper">
+        <source src="img/yt5s.com-Japan Summer Tram. live wallpaper-(1080p60).mp4" type="video/mp4">
+    </video>
+
+    <form class="center" method="post">
+        <h1>Register</h1>
+        <div class="content">
+
+            <div class="field_input">
+                <p>Username: <span asp-validation-for="Username" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Username" placeholder="Username" value=""></p>
+                <p>Email: <span asp-validation-for="Email" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Email" placeholder="Email" value=""></p>
+                <p>Password: <span asp-validation-for="Password" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Password" placeholder="Password" value=""></p>
+                <p>Repeat Password: <span asp-validation-for="ConfirmPassword" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="ConfirmPassword" placeholder="Repeat Password" value=""></p> 
+            </div>
+
+            <div class="content_footer">
+                <a class="content_footer_button"><input type="submit" class="content_footer_button" value="Register"></a>
+                <a class="content_footer_button" asp-page="index"><input type="button" class="content_footer_button" value="Back"></a>
+            </div>
+
+        </div>
+    </form>
+</body>

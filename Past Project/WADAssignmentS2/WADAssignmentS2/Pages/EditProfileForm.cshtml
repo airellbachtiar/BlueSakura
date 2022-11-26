@@ -1,0 +1,41 @@
+﻿@page
+@model WADAssignmentS2.Pages.EditProfileFormModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Register</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='~/css/styleRegisterForm.css'>
+</head>
+<body>
+
+    <video autoplay muted loop id="wallpaper">
+        <source src="img/yt5s.com-Japan Summer Tram. live wallpaper-(1080p60).mp4" type="video/mp4">
+    </video>
+
+    <form class="center" method="post">
+        <h1>Edit Profile</h1>
+        <div class="content">
+
+            <div class="field_input">
+                <p>Name: <span asp-validation-for="Name" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Name" placeholder="Name" value="@Model.user.Name"></p>
+                <p>Username: <span asp-validation-for="Username" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Username" placeholder="Username" value="@Model.user.Username"></p>
+                <p>Email: <span asp-validation-for="Email" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Email" placeholder="Email" value="@Model.user.Email"></p>
+                <p>Picture: <span asp-validation-for="Picture" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Picture" placeholder="URL" value="@Model.user."></p>
+                <p>Change Password: <span asp-validation-for="Password" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Password" placeholder="Old Password" value=""></p>
+                <p>Change Password: <span asp-validation-for="NewPassword" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="NewPassword" placeholder="New Password" value=""></p>
+                <p>Repeat Password: <span asp-validation-for="ConfirmNewPassword" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="ConfirmNewPassword" placeholder="Repeat Password" value=""></p>
+            </div>
+
+            <div class="content_footer">
+                <a class="content_footer_button"><input type="submit" class="content_footer_button" value="Save"></a>
+                <a class="content_footer_button" asp-page="index"><input type="button" class="content_footer_button" value="Cancel"></a>
+            </div>
+
+        </div>
+    </form>
+</body>

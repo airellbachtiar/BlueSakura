@@ -1,0 +1,111 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.IndividualPagesModel
+@{
+}
+
+<a asp-page="/Index" class="back_button">Back</a>
+
+<div class="individual_content_container">
+    <div class="individual_content">
+
+        <div class="individual_poster_container">
+            <img src="~/img/@Model.Entertainment.Picture" class="individual_poster">
+            <a asp-page-handler="AddPersonalEntertainment" asp-route-id="@Model.Entertainment.Id" asp-route-EntertainmentID="@Model.Entertainment.Id"><input type="button" id="add_button" value="+"></a>
+        </div>
+
+        <table class="individual_table">
+            <tr>
+                <td class="first_row">Title</td>
+                <td class="second_row">@Model.Entertainment.Title</td>
+            </tr>
+            <tr>
+                <td class="first_row">Alternate Title</td>
+                <td class="second_row">@Model.Entertainment.AlternateTitle</td>
+            </tr>
+            <tr>
+                <td class="first_row">Genre</td>
+                <td class="second_row">@Model.Entertainment.Genre</td>
+            </tr>
+            <tr>
+                <td class="first_row">Type</td>
+                <td class="second_row">@Model.Entertainment.Type()</td>
+            </tr>
+            <tr>
+                <td class="first_row">StartDate</td>
+                <td class="second_row">@Model.Entertainment.GetStartDate</td>
+            </tr>
+            <tr>
+                <td class="first_row">End Date</td>
+                <td class="second_row">@Model.Entertainment.GetEndDate</td>
+            </tr>
+            <tr>
+                <td class="first_row">Status</td>
+                <td class="second_row">@Model.Entertainment.GetStatus()</td>
+            </tr>
+            <tr>
+                <td class="first_row">Synopsis</td>
+                <td class="second_row">@Model.Entertainment.Synopsis</td>
+            </tr>
+            @if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Anime)
+            {
+                <tr>
+                    <td class="first_row">Studio</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).Studio)</td>
+                </tr>
+                <tr>
+                    <td class="first_row">Episode</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).NrOfEpisode)</td>
+                </tr>
+                <tr>
+                    <td class="first_row">Duration</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).GetDuration)</td>
+                </tr>
+                <tr>
+                    <td class="first_row">Prequel</td>
+                    @{
+                        Blue_Sakura_Logic.EntertainmentCollection.Entertainment prequel = Blue_Sakura_Logic.DAL.EntertainmentDAL.GetAnime(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).Prequel);
+                        if (prequel == null)
+                        {
+                            <td class="second_row"></td>
+                        }
+                        else
+                        {
+                            <td class="second_row"><a class="anime_link" asp-page="/FrontPage/IndividualPages" asp-route-EntertainmentID="@prequel.Id">@prequel.Title</a></td>
+                        }
+                    }
+
+                </tr>
+                <tr>
+                    <td class="first_row">Sequel</td>
+                    @{
+                        Blue_Sakura_Logic.EntertainmentCollection.Entertainment sequel = Blue_Sakura_Logic.DAL.EntertainmentDAL.GetAnime(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).Sequel);
+                        if (sequel == null)
+                        {
+                            <td class="second_row"></td>
+                        }
+                        else
+                        {
+                            <td class="second_row"><a class="anime_link" asp-page="/FrontPage/IndividualPages" asp-route-EntertainmentID="@sequel.Id">@sequel.Title</a></td>
+                        }
+                    }
+                </tr>
+            }
+            else if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Manga)
+            {
+                <tr>
+                    <td class="first_row">Author</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)Model.Entertainment).Author)</td>
+                </tr>
+                <tr>
+                    <td class="first_row">Volumes</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)Model.Entertainment).Volumes)</td>
+                </tr>
+                <tr>
+                    <td class="first_row">Chapters</td>
+                    <td class="second_row">@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)Model.Entertainment).Chapters)</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

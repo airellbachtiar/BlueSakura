@@ -1,0 +1,43 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.FrontPage.ViewUserPersonalIndividualEntertainmentModel
+@{
+}
+
+<a asp-page="/FrontPage/ViewUserPage" asp-route-UserID="@Model.user.Id" class="back_button">Back</a>
+
+<div class="individual_content_container">
+    <div class="individual_content">
+
+        <div class="individual_poster_container">
+            <img src="~/img/@Model.Entertainment.Picture" class="individual_poster">
+        </div>
+
+        <table class="individual_table">
+            <tr>
+                <td class="first_row">Title</td>
+                <td class="second_row"><a asp-page="/FrontPage/IndividualPages" asp-route-EntertainmentID="@Model.Entertainment.Id" style="text-decoration:none; color:aliceblue;">@Model.Entertainment.Title</a></td>
+            </tr>
+            <tr>
+                <td class="first_row">Status</td>
+                <td class="second_row">
+                    @Model.PersonalEntertainment.Status
+                </td>
+            </tr>
+            <tr>
+                <td class="first_row">Progress</td>
+                <td class="second_row">
+                    @Model.PersonalEntertainment.Progress/
+                    @if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Anime)
+                    {
+                        @(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Model.Entertainment).NrOfEpisode)
+                    }
+                    else if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Manga)
+                    {
+                        @(((Blue_Sakura_Logic.EntertainmentCollection.Manga)Model.Entertainment).Chapters)
+                    }
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,113 @@
+﻿@page
+@model WADAssignmentS2.Pages.OverviewListModel
+@section Login{
+    @if (Model.user.Username != null)
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page-handler="Logout">Logout</a></li>
+                <li><a class="login_button" asp-page="/EditProfileForm">EditProfile</a></li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page="/LoginForm">Login</a></li>
+            </ul>
+        </nav>
+
+    }
+}
+
+<div class="overview_container">
+
+    <table class="overview_table">
+
+        <tr class="overview_table_header">
+            <th></th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Type</th>
+            <th>Studio</th>
+        </tr>
+
+        @foreach (Class.Anime a in Model.Animes)
+        {
+            <tr>
+                <td><img src="@a.Picture" class="overview_poster"></td>
+                <td class="overview_table_title"><a asp-page="/IndividualPages" asp-route-AnimeID="@a.ID">@a.Title</a></td>
+                <td>@a.Genre</td>
+                <td>@a.Type</td>
+                <td>@a.Studio</td>
+            </tr>
+        }
+
+        <tr>
+            <td><img src="~/img/Kimi.no.Na.wa.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/KimiNoNaWa">Kimi no Na wa.</a></td>
+            <td>Drama, Romance, Supernatural</td>
+            <td>Movie</td>
+            <td>CoMix Wave Films</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Mushoku.Tensei.Isekai.Ittara.Honki.Dasu.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/MushokuTensei">Mushoku Tensei: Isekai Ittara Honki Dasu</a></td>
+            <td>Drama, Fantasy, Ecchi</td>
+            <td>Shows</td>
+            <td>Studio Bind</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Violet.Evergarden.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/VioletEvergarden">Violet Evergarden</a></td>
+            <td>Drama, Fantasy, Slice of Life</td>
+            <td>Shows</td>
+            <td>Kyoto Animation</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Violet.Evergarden.Movie.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/VioletEvergardenMovie">Violet Evergarden Movie</a></td>
+            <td>Drama, Fantasy, Slice of Life</td>
+            <td>Movie</td>
+            <td>Kyoto Animation</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Sen.to.Chihiro.no.Kamikakushi.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/SpiritedAway">Sen to Chihiro no Kamikakushi</a></td>
+            <td>Adventure, Drama, Supernatural</td>
+            <td>Movie</td>
+            <td>Studio Ghibli</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Beastars.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/Beastars">Beastars</a></td>
+            <td>Drama, Slice of Life</td>
+            <td>Shows</td>
+            <td>Orange</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Beastars.2nd.Season.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/Beastars2ndSeason">Beastars 2nd Season</a></td>
+            <td>Drama, Slice of Life</td>
+            <td>Shows</td>
+            <td>Orange</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Anohana.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/Anohana">Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai</a></td>
+            <td>Drama, Slice of Life, Supernatural</td>
+            <td>Shows</td>
+            <td>A-1 Pictures</td>
+        </tr>
+        <tr>
+            <td><img src="~/img/Demon.Slayer.Poster.jpg" class="overview_poster"></td>
+            <td class="overview_table_title"><a asp-page="/Anime/DemonSlayer">Kimetsu no Yaiba</a></td>
+            <td>Action, Supernatural</td>
+            <td>Shows</td>
+            <td>ufotable</td>
+        </tr>
+
+    </table>
+
+</div>

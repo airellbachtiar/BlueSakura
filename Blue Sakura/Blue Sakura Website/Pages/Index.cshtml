@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+<section id="content_container">
+
+    @foreach (Blue_Sakura_Logic.EntertainmentCollection.Entertainment e in Model.entertainments)
+    {
+        <article class="show_list">
+            <div class="poster_container">
+                <img src="~/img/@e.Picture" id="anime_poster">
+                <a asp-page-handler="AddPersonalEntertainment" asp-route-id="@e.Id"><input type="button" id="add_button" value="+"></a>
+            </div>
+            <a asp-page="/FrontPage/IndividualPages" asp-route-EntertainmentID="@e.Id">@e.Title</a>
+            <p>@e.Type()| @e.Genre</p>
+        </article>
+    }
+
+</section>

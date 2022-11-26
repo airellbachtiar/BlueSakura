@@ -1,0 +1,38 @@
+﻿@page
+@model WADAssignmentS2.Pages.LoginFormModel
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel='stylesheet' href='~/css/styleLoginForm.css'>
+</head>
+<body>
+    
+    <video autoplay muted loop id="wallpaper">
+        <source src="img/yt5s.com-Japan Summer Tram. live wallpaper-(1080p60).mp4" type="video/mp4">
+    </video>
+    
+    <form class="center" method="post">
+        <h1>Login</h1>
+        <div class="content">
+            
+            <div class="field_input">
+                <p>Username: </p><span asp-validation-for="Username" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Username" value="" placeholder="Username">
+                <p>Password: </p><span asp-validation-for="Password" style="color: orangered; font-size: 12px;"></span><input type="text" asp-for="Password" value="" placeholder="Password">
+            </div>
+
+            <a class="login"><input type="submit" class="login"  value="Login"></a>
+
+            <div class="content_footer">
+                <a class="content_footer_button" asp-page="Index"><input type="button" class="content_footer_button" value="Back"></a>
+                <a class="content_footer_button" asp-page="RegisterForm"><input type="button" class="content_footer_button" value="Register"></a>
+            </div>
+        </div>
+    </form>
+
+</body>

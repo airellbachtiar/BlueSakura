@@ -1,0 +1,29 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.OverviewListModel
+@{
+}
+
+<div class="overview_container">
+
+    <table class="overview_table">
+
+        <tr class="overview_table_header">
+            <th></th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Type</th>
+        </tr>
+
+        @foreach (Blue_Sakura_Logic.EntertainmentCollection.Entertainment e in Model.Entertainments)
+        {
+            <tr>
+                <td><img src="~/img/@e.Picture" class="overview_poster"><a asp-page-handler="AddPersonalEntertainment" asp-route-id="@e.Id"></a></td>
+                <td class="overview_table_title"><a asp-page="/FrontPage/IndividualPages" asp-route-EntertainmentID="@e.Id">@e.Title</a></td>
+                <td>@e.GetMainGenre()</td>
+                <td>@e.Type()</td>
+            </tr>
+        }
+
+    </table>
+
+</div>

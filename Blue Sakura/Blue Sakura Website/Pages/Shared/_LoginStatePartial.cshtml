@@ -1,0 +1,50 @@
+﻿
+@*@try
+{
+    @if (Model.user.Username != null)
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page    ="/Forms/Logout">Logout</a></li>
+                <li><a class="login_button" asp-page="/Forms/EditProfileForm">EditProfile</a></li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page="/Forms/LoginForm">Login</a></li>
+            </ul>
+        </nav>
+    }
+}
+catch (Exception)
+{
+    <nav>
+        <ul class="nav_links">
+            <li><a class="login_button" asp-page="/Forms/LoginForm">Login</a></li>
+        </ul>
+    </nav>
+}*@
+
+@if(User.Identity.IsAuthenticated)
+    {
+        <nav>
+            <ul class="nav_links">
+                <form method="post" asp-page="/Forms/Logout">
+                    <li><a class="login_button" asp-page="/Forms/EditProfileForm">Edit</a></li>
+                    <button class="login_button" type="submit">Logout</button>
+                </form>
+            </ul>
+        </nav>
+    }
+else
+    {
+        <nav>
+            <ul class="nav_links">
+                <button class="login_button" type="button" style="visibility:hidden">Edit</button>
+                <a class="login_button" asp-page="/Forms/LoginForm">Login</a>
+            </ul>
+        </nav>
+    }

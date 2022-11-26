@@ -1,0 +1,83 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.AdminPage.AdminViewPageModel
+@section CSS{
+    <link rel="stylesheet" href="~/css/EditEntertainmentPage.cshtml.css" />
+}
+
+<a asp-page="/AdminPage/AddEntertainmentOptionPage" class="back_button">Add</a>
+
+<div class="overview_container">
+
+    <table class="overview_table">
+
+        <tr class="overview_table_header">
+            <th>ID</th>
+            <th></th>
+            @*Picture*@
+            <th>Title</th>
+            <th>Alternate Title</th>
+            <th>Genre</th>
+            <th>Main Genre</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            @*Anime*@
+            <th>Studio</th>
+            <th>Number Of Episode</th>
+            <th>Duration</th>
+            <th>Prequel</th>
+            <th>Sequel</th>
+            @*Manga*@
+            <th>Author</th>
+            <th>Volumes</th>
+            <th>Chapters</th>
+
+            <th></th>
+        </tr>
+
+        @foreach (Blue_Sakura_Logic.EntertainmentCollection.Entertainment e in Model.Entertainments)
+        {
+            <tr>
+                <td>@e.Id</td>
+                <td><img src="~/img/@e.Picture" class="overview_poster"></td>
+                <td class="overview_table_title"><a asp-page="/AdminPage/EditEntertainmentPage" asp-route-EntertainmentID="@e.Id" style="text-decoration:none; color:aliceblue;">@e.Title</a></td>
+                <td>@e.AlternateTitle</td>
+                <td>@e.Genre</td>
+                <td>@e.GetStatus()</td>
+                <td>@e.GetStartDate</td>
+                <td>@e.GetEndDate</td>
+                <td>@e.Status</td>
+
+                @if (e is Blue_Sakura_Logic.EntertainmentCollection.Anime)
+                {
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)e).Studio)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)e).NrOfEpisode)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)e).Duration)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)e).Prequel)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)e).Sequel)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                }
+
+
+                @if (e is Blue_Sakura_Logic.EntertainmentCollection.Manga)
+                {
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)e).Author)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)e).Volumes)</td>
+                    <td>@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)e).Chapters)</td>
+                }
+
+
+                <td><a asp-page-handler="RemoveFromList" asp-route-entertainmentId="@e.Id" style="text-decoration:none; color:aliceblue;">Remove</a></td>
+            </tr>
+        }
+
+    </table>
+
+</div>

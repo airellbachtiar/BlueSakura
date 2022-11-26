@@ -1,0 +1,82 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.AdminPage.EditEntertainmentPageModel
+@section CSS{
+<link rel="stylesheet" href="~/css/EditEntertainmentPage.cshtml.css" />
+}
+
+<form class="center" method="post" enctype="multipart/form-data">
+    <input hidden asp-for="PicturePath">
+
+    <h1>Edit Entertainment</h1>
+    <div class="content">
+
+        <div class="field_input">
+            <p>Title: <span asp-validation-for="Title" style="color: orangered; font-size: 12px;"></span><input asp-for="Title" type="text" value="@Model.Entertainment.Title" /></p>
+            <p>AlternateTitle: <span asp-validation-for="AlternateTitle" style="color: orangered; font-size: 12px;"></span><input asp-for="AlternateTitle" type="text" value="@Model.Entertainment.AlternateTitle" /></p>
+            <p>Genre: <span asp-validation-for="Genre" style="color: orangered; font-size: 12px;"></span><input asp-for="Genre" type="text" value="@Model.Entertainment.Genre" /></p>
+
+            @*Select*@
+            <p>Main Genre: <span asp-validation-for="SelectedMainGenre" style="color: orangered; font-size: 12px;"></span></p>
+            <select asp-for="SelectedMainGenre" asp-items="@Model.GenreTypeList">
+            </select>
+
+            <p>Start Date: <span asp-validation-for="StartDate" style="color: orangered; font-size: 12px;"></span><input asp-for="StartDate" type="date" value="@Model.StartDate" /></p>
+            <p>End Date: <span asp-validation-for="EndDate" style="color: orangered; font-size: 12px;"></span><input asp-for="EndDate" type="date" value="@Model.EndDate" /></p>
+
+            @*Select*@
+            <p>Status: <span asp-validation-for="SelectedStatus" style="color: orangered; font-size: 12px;"></span></p>
+            <select asp-for="SelectedStatus" asp-items="@Model.StatusTypeList">
+            </select>
+
+            <p>Synopsis: <span asp-validation-for="Synopsis" style="color: orangered; font-size: 12px;"></span><input asp-for="Synopsis" type="text" value="@Model.Entertainment.Synopsis" /></p>
+            <p>Description: <span asp-validation-for="Description" style="color: orangered; font-size: 12px;"></span><input asp-for="Description" type="text" value="@Model.Entertainment.Description" /></p>
+            <p>Picture: <input asp-for="Picture" value="" /></p>
+            <img src="~/img/@Model.Entertainment.Picture" class="overview_poster">
+
+            @if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Anime)
+            {
+                @*ANIME*@
+                <p>Studio: <span asp-validation-for="Studio" style="color: orangered; font-size: 12px;"></span><input asp-for="Studio" type="text" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)(Model.Entertainment)).Studio)" /></p>
+                <p>Number Of Episode: <span asp-validation-for="NrOfEpisode" style="color: orangered; font-size: 12px;"></span><input asp-for="NrOfEpisode" type="number" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)(Model.Entertainment)).NrOfEpisode)" /></p>
+                <p>Duration: <span asp-validation-for="Duration" style="color: orangered; font-size: 12px;"></span><input asp-for="Duration" type="number" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)(Model.Entertainment)).Duration)" /></p>
+
+                @*Select anime*@
+                <p>Prequel: <span asp-validation-for="Prequel" style="color: orangered; font-size: 12px;"></span></p>
+                <select asp-for="@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)(Model.Entertainment)).Prequel)" asp-items="Model.AnimeSelectList">
+                    <option value=""></option>
+                </select>
+
+                <p>Sequel: <span asp-validation-for="Sequel" style="color: orangered; font-size: 12px;"></span></p>
+                <select asp-for="@(((Blue_Sakura_Logic.EntertainmentCollection.Anime)(Model.Entertainment)).Sequel)" asp-items="Model.AnimeSelectList">
+                    <option value=""></option>
+                </select>
+
+            }
+            else if (Model.Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Manga)
+            {
+                @*MANGA*@
+                <p>Author: <span asp-validation-for="Author" style="color: orangered; font-size: 12px;"></span><input asp-for="Author" type="text" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)(Model.Entertainment)).Author)" /></p>
+                <p>Volume: <span asp-validation-for="Volume" style="color: orangered; font-size: 12px;"></span><input asp-for="Volume" type="number" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)(Model.Entertainment)).Volumes)" /></p>
+                <p>Chapter: <span asp-validation-for="Chapter" style="color: orangered; font-size: 12px;"></span><input asp-for="Chapter" type="number" value="@(((Blue_Sakura_Logic.EntertainmentCollection.Manga)(Model.Entertainment)).Chapters)" /></p>
+            }
+
+        </div>
+
+        @section Scripts{
+            <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var filename = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(filename);
+                });
+            });
+            </script>
+        }
+
+        <div class="content_footer">
+            <a class="content_footer_button"><input type="submit" class="content_footer_button" value="Save"></a>
+            <a class="content_footer_button" asp-page="/AdminPage/AdminViewPage"><input type="button" class="content_footer_button" value="Cancel"></a>
+        </div>
+
+    </div>
+</form>

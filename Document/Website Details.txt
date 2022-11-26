@@ -1,0 +1,86 @@
+Home(h1)
+Header(Tab): All and Login button
+Content: Anime shows and movies
+Must have list:
+1. Movie - Genre 1 - Kimi no Na wa.
+-2. Movie - Genre 2 - Sen to Chihiro no Kamikakushi
+-3. Show - Multiple Season(1) - Beastars
+-4. Show - Multiple Season(2) - Beastars 2nd Season
+5. Show - 1 Season - Mushoku Tensei: Isekai Ittara Honki Dasu
+-6. Show - Original - Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai
+7. Show - Violet Evergarden
+8. Movie from show - Violet Evergarden Movie
+
+Footer: contact info
+
+Home page and personal list may be in the same html
+
+<article class="show_list">
+        <img src="img/Sen.to.Chihiro.no.Kamikakushi.Poster.jpg" id="anime_poster">
+        <a href="">Sen to Chihiro no Kamikakushi</a>
+        <p>info.</p>
+    </article>
+
+    <article class="show_list">
+        <img src="img/Beastars.Poster.jpg" id="anime_poster">
+        <a href="">Beastars</a>
+        <p>info.</p>
+    </article>
+
+    <article class="show_list">
+        <img src="img/Beastars.2nd.Season.Poster.jpg" id="anime_poster">
+        <a href="">Beastars 2nd Season</a>
+        <p>info.</p>
+    </article>
+
+    <article class="show_list">
+        <img src="img/Anohana.Poster.jpg" id="anime_poster">
+        <a href="">Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai</a>
+        <p>info.</p>
+    </article>
+
+
+Server=studymysql01.fhict.local;Uid=YourUid;Database=YourDB;Pws=YourPassWord;SslMode=none
+
+SslMode=none
+
+
+Possible addition:
+-Scoring system for each anime and user can rate them
+-Comments with the score for each anime and per user
+-Own list of anime with progress bar
+-More details for each anime
+-Password hashing
+-Save picture in database
+-Basically combine with OOD Assignment
+-Blue Sakura
+
+//-Add button on overview list
+//-Add button needs to work on individual page
+//-fix edit manga text box
+//-view other user list info on top
+-possibly rearrange the layout of the individual page
+//-delete add button from individual personal entertainment
+//-fix overview list studio column
+//-remove button on adminviewpage
+-edit entertainment and profile picture, needs to be on top somehow
+
+
+Website Presentation List
+-Register new user(possibly give an error in email on purpose)
+-Login
+-Show all pages(Home, All, MyList, Search)
+-edit profile and edit picture
+-Show Individual Page
+-Add Entertainment(Anime and Manga)
+-Show MyList
+-Go to 1 page
+-Change content personal
+-Remove Personal
+-search user
+-show others list
+
+-login using admin account
+-show admin page
+-add entertainment
+-edit that entertainment

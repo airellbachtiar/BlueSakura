@@ -1,0 +1,47 @@
+﻿@page
+@model Blue_Sakura_Website.Pages.FrontPage.ViewUserPageModel
+@{
+}
+
+<a asp-page="/FrontPage/SearchPage" class="back_button">Back</a>
+
+<div class="title">
+<h1>@Model.user.Username's List</h1>
+</div>
+
+<div class="overview_container">
+
+    <table class="overview_table">
+
+        <tr class="overview_table_header">
+            <th></th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Progress</th>
+        </tr>
+
+        @foreach (Blue_Sakura_Logic.PersonalEntertainmentCollection.PersonalEntertainment p in Model.personalEntertainments)
+        {
+            Blue_Sakura_Logic.EntertainmentCollection.Entertainment Entertainment = @Blue_Sakura_Logic.DAL.EntertainmentDAL.GetEntertainment(p.EntertainmentID);
+
+            <tr>
+                <td><img src="~/img/@Blue_Sakura_Logic.DAL.EntertainmentDAL.GetEntertainment(p.EntertainmentID).Picture" class="overview_poster"></td>
+                <td class="overview_table_title"><a asp-page="/FrontPage/ViewUserPersonalIndividualEntertainment" asp-route-EntertainmentID="@p.EntertainmentID" asp-route-UserID="@Model.user.Id">@Entertainment.Title</a></td>
+                <td>@p.Status</td>
+                <td>
+                    @p.Progress/
+                    @if (Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Anime)
+                    {
+                        @(((Blue_Sakura_Logic.EntertainmentCollection.Anime)Entertainment).NrOfEpisode)
+                    }
+                    else if (Entertainment is Blue_Sakura_Logic.EntertainmentCollection.Manga)
+                    {
+                        @(((Blue_Sakura_Logic.EntertainmentCollection.Manga)Entertainment).Chapters)
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - WADAssignmentS2</title>
+    <link rel="stylesheet" href="~/css/styleIndex.css" />
+    @RenderSection("CSS", required: false)
+</head>
+<body>
+
+    <video autoplay muted loop id="wallpaper">
+        <source src="~/img/yt5s.com-Japan Summer Tram. live wallpaper-(1080p60).mp4" type="video/mp4">
+    </video>
+
+    <header>
+        <img src="~/img/WhiteLogoTransparent.png" style="width: 123.25px; height: 60px; margin-bottom: -108px; margin-top: -108px;">
+        <nav>
+            <ul class="nav_links">
+                <li><a asp-page="/index" class="nav_links">Home</a></li>
+                <li><a asp-page="/FrontPage/OverviewList" class="nav_links">All</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-page="/PersonalPage/PersonalListPage" class="nav_links">My List</a></li>
+                }
+                <li><a asp-page="/FrontPage/SearchPage" class="nav_links">Search</a></li>
+                @if (User.HasClaim("Admin", "True"))
+                {
+                    <li><a asp-page="/AdminPage/AdminViewPage" class="nav_links">Admin</a></li>
+                }
+            </ul>
+        </nav>
+        @*@RenderSection("Login")*@
+        <partial name="_LoginStatePartial">
+    </header>
+
+    <div class="page_container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - WADAssignmentS2 - Contact info: airell.bachtiar@student.fontys.nl @*<a asp-area="" asp-page="/Privacy">Privacy</a>*@
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

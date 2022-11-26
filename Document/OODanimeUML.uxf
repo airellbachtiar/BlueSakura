@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>368</x>
+      <y>680</y>
+      <w>672</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>Entertainment
+--
+_-idCounter: int_
+-id: int
+-title: string
+-mainGenre: GenreType
+-startDate: DateTime
+-status: EntertainmentStatusType
+-alternateTitle: string
+-endDate: DateTime
+-synopsis: string
+-description: string
+--
++Entertainment(title: string, mainGenre: GenreType, startDate: DateTime,
+status: EntertainmentStatusType = COMING_SOON, alternateTitle: string = null,endDate: DateTime = null, description: string = null)
++Id{get;}: int
++Title{get;set;}: string
++MainGenre{get; et;}: GenreType
++StartDate{get;set;}: DateTime
++Status{get;set;}: EntertainmentStatusType
++AlternateTitle{get;set;}: string
++EndDate{get;set;}: DateTime
++Synopsis{get;set;}: string
++Description{get;set;}: string
+/+Type: string/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>24</x>
+      <y>1080</y>
+      <w>664</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>Anime
+--
+-studio: string
+-nrOfEpisode: int
+-duration: int
+-prequel: Anime
+-sequel: Anime
+--
++Anime(title: string, mainGenre: GenreType, startDate: DateTime, studio: string,
+status: EntertainmentStatusType = COMING_SOON, alternateTitle: string = null,endDate: DateTime = null, description: string = null,
+nrOfEpisode: int = 1, duration: int = 0, prequel: Anime = null, sequel: Anime = null)
++Studio{get;set;}: string
++NrOfEpisode{get;set;}: int
++Duration{get;set;}: int
++Prequel{get;set;}: Anime
++Sequel{get;set;}: Anime
++Type: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>1080</y>
+      <w>664</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Manga
+--
+-authors: string
+-volumes: int
+-chapters: int
+--
++Entertainment(title: string, mainGenre: GenreType, startDate: DateTime, Author: string,
+status: EntertainmentStatusType = COMING_SOON, alternateTitle: string = null,endDate: DateTime = null, description: string = null,
+volumes: int = 0, chapters: int = 0)
++Authors{get;set;}: string
++Volumes{get;set;}: int
++Chapters{get;set;}: int
++Type: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>672</y>
+      <w>88</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+GenreType
+--
+ACTION
+COMEDY
+DRAMA
+FANTASY
+HORROR
+MYSTERY
+ROMANCE
+THRILLER</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>512</x>
+      <y>96</y>
+      <w>368</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>User
+--
+_-idCOunter: int = 1_
+-id: int
+-email: string
+-username: string
+-password: string
+-isAdmin: bool
+--
++User(email:string, username: string, password: string)
++Id{get;}: int
++Username{get;}: string
++Password{get;}: string
++IsAdmin{get; set;}: bool
++PersonalAnimeList{get; set;}: List&lt;PersonalEntertainment&gt;
++AddPersonalEntertainment(personalEntertainment: PersonalEntertainment): bool
++GetPersonalEntertainment(id: int): PersonalEntertainment
++GetEntertainments: List&lt;Entertainment&gt;
++GetEntertainment(id: int): Entertainment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>472</y>
+      <w>496</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PersonalEntertainment
+--
+-entertainment: Entertainment
+-status: PersonalStatusType
+-progress: int
+--
++PersonalEntertainment(entertainment: Entertainment, status: PersonalStatusType, progress: int)
++Entertainment{get;}: Entertainment
++Status{get;set;}: PersonalStatusType
++Progress{get; set;}: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>488</y>
+      <w>264</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AllEntertainment
+--
+--
++AllEntertainment()
++AddEntertainment(entertainment: Entertainment);
++GetEntertainment(title: string): Entertainment
++GetEntertainment(id: int): Entertainment</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>464</y>
+      <w>120</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+PersonalStatusType
+--
+PLAN
+WATCHIING
+READING
+DROPPED
+COMPLETED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>560</y>
+      <w>40</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+has
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>328</y>
+      <w>40</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+has
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>688</x>
+      <y>496</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+has
+m2=1</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>48</x>
+      <y>848</y>
+      <w>144</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+EntertainmentStatusType
+--
+AIRING
+COMPLETED
+COMING_SOON
+ON_HIATUS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1016</x>
+      <y>168</y>
+      <w>144</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AllUser
+--
+--
++Users{get;}: List&lt;User&gt;
++addUser(user: User): bool
++GetUser(id: int): User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>720</y>
+      <w>200</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>888</y>
+      <w>200</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>512</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>872</x>
+      <y>200</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+has
+m2=0..*</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>984</y>
+      <w>280</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;330.0;60.0;330.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>1024</y>
+      <w>248</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1168</x>
+      <y>480</y>
+      <w>312</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>_Entertainmentdb_
+--
+_-connectionStr: string_
+_-connection: MySqlConnection_
+_-sql: string_
+_-cmd: MySqlCommand_
+--
+_+GetEntertainment(): List&lt;Entertainment&gt;_
+_+AddEntertainment(entertainment: Entertainment): void_
+_+EditEntertainment(entertainemnt: Entertainment): void_
+_+DeleteEntertainment(entertainment: Entertainment): void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1072</x>
+      <y>552</y>
+      <w>112</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1208</x>
+      <y>152</y>
+      <w>312</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>_Userdb_
+--
+_-connectionStr: string_
+_-connection: MySqlConnection_
+_-sql: string_
+_-cmd: MySqlCommand_
+--
+_+GetUser(): List&lt;User&gt;_
+_+AddUser(user: User): void_
+_+EditUser(user: User): void_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>208</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

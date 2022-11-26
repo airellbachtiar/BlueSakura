@@ -1,0 +1,64 @@
+﻿@page
+@model WADAssignmentS2.Pages.IndividualPagesModel
+@section Login{
+    @if (Model.user.Username != null)
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page-handler="Logout">Logout</a></li>
+                <li><a class="login_button" asp-page="/EditProfileForm">EditProfile</a></li>
+            </ul>
+        </nav>
+    }
+    else
+    {
+        <nav>
+            <ul class="nav_links">
+                <li><a class="login_button" asp-page="/LoginForm">Login</a></li>
+            </ul>
+        </nav>
+
+    }
+}
+
+<a asp-page="/Index" class="back_button">Back</a>
+
+<div class="individual_content_container">
+    <div class="individual_content">
+
+        <div class="individual_poster_container">
+            <img src="~/@Model.anime.Picture" class="individual_poster">
+            <input type="button" id="add_button" value="+">
+        </div>
+
+        <table class="individual_table">
+            <tr>
+                <td class="first_row">Title</td>
+                <td class="second_row">@Model.anime.Title</td>
+            </tr>
+            <tr>
+                <td class="first_row">Genre</td>
+                <td class="second_row">@Model.anime.Genre</td>
+            </tr>
+            <tr>
+                <td class="first_row">Type</td>
+                <td class="second_row">@Model.anime.Type</td>
+            </tr>
+            <tr>
+                <td class="first_row">Studio</td>
+                <td class="second_row">@Model.anime.Studio</td>
+            </tr>
+            <tr>
+                <td class="first_row">Duration</td>
+                <td class="second_row">@Model.anime.GetDuration</td>
+            </tr>
+            <tr>
+                <td class="first_row">Synopsis</td>
+                <td class="second_row">
+                    @Model.anime.Synopsis
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
